@@ -1,5 +1,4 @@
 ﻿using BrightAdjust.Properties;
-using OpenCvSharp;
 using System;
 using System.Windows.Forms;
 
@@ -10,6 +9,7 @@ namespace BrightAdjust
         public BrightnessTrayContext()
         {
             this.TrayIcon.Icon = Resources.SmallIcon;
+            this.TrayIcon.Text = "Double click to adjust screen brightness";
 
             this.ContextMenu.Items.Add("Adjust &Brightness", null, this.AdjustBrightnessContextMenuHandler);
             this.ContextMenu.Items.Add("-");

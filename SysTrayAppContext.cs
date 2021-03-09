@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrightAdjust
@@ -36,15 +34,9 @@ namespace BrightAdjust
             get { return _notifyIcon; }
         }
 
-        protected virtual void OnTrayIconClicked(MouseEventArgs e)
-        {
-            
-        }
+        protected virtual void OnTrayIconClicked(MouseEventArgs e) {}
 
-        protected virtual void OnTrayIconDoubleClicked(MouseEventArgs e)
-        {
-
-        }
+        protected virtual void OnTrayIconDoubleClicked(MouseEventArgs e) {}
 
         private void IconClickHandler(object sender, MouseEventArgs e)
         {
