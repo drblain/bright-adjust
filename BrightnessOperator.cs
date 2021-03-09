@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Management;
-using System;
 
 namespace BrightAdjust
 {
@@ -14,6 +13,7 @@ namespace BrightAdjust
         private static readonly int num_threads = 3;
         private static readonly int video_device = 0;
 
+        // Store brightness management instances here to avoid initialization every time this is called
         private static ManagementObject brightness_instance = null;
         private static ManagementBaseObject brightness_class = null;
 
