@@ -1,8 +1,6 @@
 ﻿using BrightAdjust.Properties;
 using OpenCvSharp;
 using System;
-using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace BrightAdjust
@@ -13,7 +11,7 @@ namespace BrightAdjust
         {
             this.TrayIcon.Icon = Resources.SmallIcon;
 
-            this.ContextMenu.Items.Add("Adjust &Brightness", null, this.AdjustBrightnessContextMenuHandler).Font = new Font(ContextMenu.Font, FontStyle.Bold);
+            this.ContextMenu.Items.Add("Adjust &Brightness", null, this.AdjustBrightnessContextMenuHandler);
             this.ContextMenu.Items.Add("-");
             this.ContextMenu.Items.Add("E&xit", null, this.ExitContextMenuClickHandler);
         }
@@ -38,18 +36,12 @@ namespace BrightAdjust
         private void HandleChangeBrightness()
         {
             // The argument to change brightness is the number of threads to use during execution
-            this.ChangeBrightness(4);
+            this.ChangeBrightness();
         }
 
-        private void ChangeBrightness(int numThreads)
+        private void ChangeBrightness()
         {
-            // Capture an image from the primary camera
-            VideoCapture cam = new VideoCapture(0);
-            Mat img = new Mat();
-            cam.Read(img);
-            cam.Release();
-            Console.WriteLine(img);
+            BrightnessOperator.ChangeBrightness();
         }
-
     }
 }
