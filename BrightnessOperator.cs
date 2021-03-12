@@ -78,6 +78,7 @@ namespace BrightAdjust
             // Compute the final luma value and set the brightness proportionately
             // Do this by averaging the luma and normalizing the value to a 100-based scale
             int scaled_avg_luma = (int)((bgr_sums.Sum() * 100) / (img.Rows * img.Cols * 255));
+            img.Dispose();
             return scaled_avg_luma;
         }
 
@@ -107,7 +108,6 @@ namespace BrightAdjust
             {
                 // initialize
 
-                // Querying the Windows service to get the Brightness API.
                 var searcher = new ManagementObjectSearcher(
                     "root\\WMI",
                     "SELECT * FROM WmiMonitorBrightness");
@@ -117,7 +117,6 @@ namespace BrightAdjust
                 resultEnum.MoveNext();
                 brightness_class = resultEnum.Current;
 
-                // We need to create an instance to use the Set method!
                 var instanceName = (string)brightness_class["InstanceName"];
                 brightness_instance = new ManagementObject(
                     "root\\WMI",
