@@ -16,4 +16,4 @@ Once the application is running, its functionality can be accessed through eithe
 
 ## 💳 license
 
-This project uses the GNU GPL v3 license.
+This project uses the MIT software license.
