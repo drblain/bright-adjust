@@ -1,4 +1,5 @@
 ﻿using OpenCvSharp;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace BrightAdjust
         private static ManagementObject brightness_instance = null;
         private static ManagementBaseObject brightness_class = null;
 
+        // TODO : this should be refactored to allow for a more variable number of threads
+        // maybe use Process.GetCurrentProcess().Threads.Count?
+        // this can be refactored so each thread computes b, g, and r sums over an evenly divided number of pixels
         public static void WorkerMain(ref Mat img, int thread_id, out double sum)
         {
             sum = 0.0;
@@ -84,15 +88,7 @@ namespace BrightAdjust
 
         public static void SetBrightness(int brightness)
         {
-            if (brightness < 0)
-            {
-                brightness = 0;
-            }
-
-            if (brightness > 100)
-            {
-                brightness = 100;
-            }
+            brightness = Math.Min(Math.Max(brightness, 0), 100);
 
             var inParams = brightness_instance.GetMethodParameters("WmiSetBrightness");
             inParams["Brightness"] = brightness;

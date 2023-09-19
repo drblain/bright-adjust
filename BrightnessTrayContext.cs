@@ -11,6 +11,8 @@ namespace BrightAdjust
             this.TrayIcon.Icon = Resources.SmallIcon;
             this.TrayIcon.Text = "Double click to adjust screen brightness";
 
+            // TODO : these context menu items don't properly have their shortcuts highlighted
+            // use MenuItem instances?
             this.ContextMenu.Items.Add("Adjust &Brightness", null, this.AdjustBrightnessContextMenuHandler);
             this.ContextMenu.Items.Add("-");
             this.ContextMenu.Items.Add("E&xit", null, this.ExitContextMenuClickHandler);
